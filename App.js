@@ -1,5 +1,6 @@
 import Dashboard from "./screens/Dashboard";
 import LoginPage from "./screens/LoginPage";
+import login2 from "./screens/login2"
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
@@ -17,6 +18,11 @@ export default function App() {
         <Stack.Screen
           name="Dashboard"
           component={Dashboard}
+        // options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="login2"
+          component={login2}
         // options={{ headerShown: false }}
         />
       </Stack.Navigator>

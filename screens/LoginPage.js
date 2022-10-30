@@ -46,6 +46,11 @@ export default function LoginPage({ navigation }) {
                 onPress={() => navigation.navigate("Dashboard")}>
                 <Text style={styles.loginText}>LOGIN</Text>
             </TouchableOpacity>
+
+            <TouchableOpacity style={styles.loginBtn}
+                onPress={() => navigation.navigate("login2")}>
+                <Text style={styles.loginText}>LOGIN2</Text>
+            </TouchableOpacity>
         </View>
     );
 }
