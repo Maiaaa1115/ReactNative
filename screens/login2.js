@@ -11,15 +11,21 @@ import {
 } from "react-native";
 import Constants from "expo-constants";
 
-const baseUrl = "https://reqres.in";
+const baseUrl = "http://lionbackend-env.eba-jyvydwg3.ap-southeast-1.elasticbeanstalk.com/api";
 
 export default function App() {
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
+  const [password, setPasswd] = useState("");
+
   const [isLoading, setIsLoading] = useState(false);
 
   const onChangeNameHandler = (fullName) => {
     setFullName(fullName);
+  };
+
+  const onChangePasswdHandler = (passwd) =>{
+    setPasswd(passwd);
   };
 
   const onChangeEmailHandler = (email) => {
@@ -33,9 +39,9 @@ export default function App() {
     }
     setIsLoading(true);
     try {
-      const response = await axios.post(`${baseUrl}/api/users`, {
-        fullName,
+      const response = await axios.post(`${baseUrl}/login`, {
         email,
+        password,
       });
       if (response.status === 201) {
         alert(` You have created: ${JSON.stringify(response.data)}`);
@@ -63,22 +69,22 @@ export default function App() {
         </View>
         <View style={styles.wrapper}>
           <TextInput
-            placeholder="Full Name"
+            placeholder="email"
             placeholderTextColor="#ffffff"
             style={styles.input}
             value={fullName}
             editable={!isLoading}
-            onChangeText={onChangeNameHandler}
+            onChangeText={onChangeEmailHandler}
           />
         </View>
         <View style={styles.wrapper}>
           <TextInput
-            placeholder="Email"
+            placeholder="password"
             placeholderTextColor="#ffffff"
             style={styles.input}
-            value={email}
+            value={password}
             editable={!isLoading}
-            onChangeText={onChangeEmailHandler}
+            onChangeText={onChangePasswdHandler}
           />
         </View>
         <View>
